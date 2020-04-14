@@ -10,7 +10,7 @@
 import scrapy
 
 
-class IbovespaSpider(scrapy.Spider):
+class NasdaqSpider(scrapy.Spider):
     name = 'nasdaq'
     start_urls = ['https://www.investing.com/equities/StocksFilter?index_id=20']
 

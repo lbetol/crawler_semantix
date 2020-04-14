@@ -10,10 +10,21 @@
 import scrapy
 
 
-class IbovespaSpider(scrapy.Spider):
+class UsdBrlSpider(scrapy.Spider):
     name = 'usd-brl'
     start_urls = ['https://m.investing.com/currencies/usd-brl']
 
     def parse(self, response):
-        import ipdb; ipdb.set_trace()
-        pass
+        currency = response.xpath('//td[contains(@class, "center")]/text()').getall()
+        value = response.xpath('//td[contains(@class, "last")]/text()').getall()
+        change = response.xpath('//span[contains(@class, "pc")]/text()').getall()
+        perc = response.xpath('//td[contains(@class, "pch")]/text()').getall()
+        timestamp = response.xpath('//td[contains(@class, "tim")]/text()').getall()
+
+        yield {
+            'currency': currency,
+            'value': value,
+            'change': change,
+            'perc': perc,
+            'timestamp': timestamp
+        }
