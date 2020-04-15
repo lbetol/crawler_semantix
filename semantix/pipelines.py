@@ -33,28 +33,28 @@ class SemantixPipeline(object):
     # criar_tabela cria todas as tabelas que serão utilizadas na aplicação
     def criar_tabela(self):
         self.banco.execute(""" create table if not exists nasdaq(
-                            name text,
-                            last_usd text null,
-                            high_usd text null,
-                            low_usd text null,
-                            chg text null,
-                            chper text null,
-                            vol text null,
-                            timenq varchar(8) null
+                            name text primary key,
+                            last_usd text,
+                            high_usd text,
+                            low_usd text,
+                            chg text,
+                            chper text,
+                            vol text,
+                            timenq varchar(8)
                             )""")
         self.banco.execute(""" create table if not exists ibovespa(
-                            name text,
+                            name text primary key,
                             last_rs text,
                             high_rs text,
                             low_rs text,
                             chg text,
                             chgper text,
                             vol text,
-                            time text
+                            time varchar(8)
                             )""")
 
         self.banco.execute(""" create table if not exists usdbrl(
-                            currency text,
+                            currency text primary key,
                             value text,
                             change text,
                             perc text,
@@ -62,7 +62,7 @@ class SemantixPipeline(object):
                             )""")
 
         self.banco.execute(""" create table if not exists brl(
-                            name text,
+                            name text primary key,
                             last_usd text null,
                             high_usd text null,
                             low_usd text null,
@@ -72,7 +72,7 @@ class SemantixPipeline(object):
                             chg text,
                             chg_per text,
                             vol text,
-                            time text,
+                            time varchar(8),
                             timestamp
                             )""")
 
