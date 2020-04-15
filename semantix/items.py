@@ -14,8 +14,9 @@
 
 import scrapy
 
+# Todos os item que serão capturados do spider.
 class SemantixItemNasdaq(scrapy.Item):
-        # Todos os item que serão capturados do spider
+        # Extraidos da classe NasdaqSpider
         # Itens da Nasdaq
         name = scrapy.Field()
         last_usd = scrapy.Field()
@@ -24,9 +25,10 @@ class SemantixItemNasdaq(scrapy.Item):
         chg = scrapy.Field()
         chper = scrapy.Field()
         vol = scrapy.Field()
-        time = scrapy.Field()
+        timenq = scrapy.Field()
 
 class SemantixItemIbovespa(scrapy.Item):
+        # Extraidos da classe IbovespaSpider
         # Itens do Ibovespa
         name = scrapy.Field()
         last_rs = scrapy.Field()
@@ -38,6 +40,7 @@ class SemantixItemIbovespa(scrapy.Item):
         time = scrapy.Field()
 
 class SemantixItemCotacao(scrapy.Item):
+        # Extraidos da classe UsdBrlSpider
         # Itens da da cotação
         currency = scrapy.Field()
         value = scrapy.Field()

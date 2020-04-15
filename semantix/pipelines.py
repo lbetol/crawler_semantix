@@ -14,6 +14,9 @@
 
 import sqlite3
 
+# classe SemantixPipeline é responsável por toda a interação
+# da aplicação com o banco de dados. Desde a criação do banco
+# a inserção de dados no banco de dados.
 class SemantixPipeline(object):
 
     # __init__ irá conectar no banco de dados
@@ -31,13 +34,13 @@ class SemantixPipeline(object):
     def criar_tabela(self):
         self.banco.execute(""" create table if not exists nasdaq(
                             name text,
-                            last_usd text,
-                            high_usd text,
-                            low_usd text,
-                            chg text,
-                            chper text,
-                            vol text,
-                            time text
+                            last_usd text null,
+                            high_usd text null,
+                            low_usd text null,
+                            chg text null,
+                            chper text null,
+                            vol text null,
+                            timenq varchar(8) null
                             )""")
         self.banco.execute(""" create table if not exists ibovespa(
                             name text,
@@ -58,29 +61,44 @@ class SemantixPipeline(object):
                             timestamp text
                             )""")
 
+        self.banco.execute(""" create table if not exists brl(
+                            name text,
+                            last_usd text null,
+                            high_usd text null,
+                            low_usd text null,
+                            last_rs text,
+                            high_rs text,
+                            low_rs text,
+                            chg text,
+                            chg_per text,
+                            vol text,
+                            time text,
+                            timestamp
+                            )""")
 
-    def process_item1(self, item, IbovespaSpider):
-        self.insere_ibovespa(item)
+    # Função process_item prepara todos os itens
+    # para serem enviados as suas respectivas tabelas
+    def process_item(self, item, spider):
+        if spider == "ibovespa":
+            self.insere_ibovespa(item)
+        if spider == "nasdaq":
+            self.insere_nasdaq(item)
+        if spider == "usdbrl":
+            self.insere_cotacao(item)
         return item
 
-    def process_item2(self, item, UsdBrlSpider):
-        self.insere_cotacao(item)
-        return item
-
-    def process_item(self, item, NasdaqSpider):
-        self.insere_nasdaq(item)
-        return item
-
+    # insere_cotacao insere os itens na tabela usbrl
     def insere_cotacao(self, item):
         self.banco.execute("""insert into usdbrl values (?,?,?,?,?)""", (
-            item['currency'],
-            item['value'],
-            item['change'],
-            item['perc'],
-            item['timestamp']
+            item['currency'][0],
+            item['value'][0],
+            item['change'][0],
+            item['perc'][0],
+            item['timestamp'][0]
         ))
         self.conecta.commit()
 
+    # insere_nasdaq insere os itens na tabela nasdaq
     def insere_nasdaq(self, item):
         self.banco.execute("""insert into nasdaq values (?,?,?,?,?,?,?,?)""", (
             item['name'][0],
@@ -90,19 +108,20 @@ class SemantixPipeline(object):
             item['chg'][0],
             item['chper'][0],
             item['vol'][0],
-            item['time'][0]
+            item['timenq'][0]
         ))
         self.conecta.commit()
 
+    # insere_ibovespa insere os itens na tabela ibovespa
     def insere_ibovespa(self, item):
         self.banco.execute("""insert into ibovespa values (?,?,?,?,?,?,?,?)""", (
-            item['name'],
-            item['last_rs'],
-            item['high_rs'],
-            item['low_rs'],
-            item['chg'],
-            item['chper'],
-            item['vol'],
-            item['time']
+            item['name'][0],
+            item['last_rs'][0],
+            item['high_rs'][0],
+            item['low_rs'][0],
+            item['chg'][0],
+            item['chper'][0],
+            item['vol'][0],
+            item['time'][0]
         ))
         self.conecta.commit()
