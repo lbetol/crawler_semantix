@@ -10,5 +10,7 @@ Projeto realizado para processo seletivo
 # Detalhes do projeto
 
 Projeto realizado com o fremework Scrapy
-Documentação do framework https://docs.scrapy.org/en/latest 
+Documentação do framework https://docs.scrapy.org/en/latest <br>
+<br>
+Dentro da pasta doc, a um diagrama de funcionamento da projeto.
 
