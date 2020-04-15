@@ -8,23 +8,17 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
-
+from semantix.items import SemantixItemCotacao
 
 class UsdBrlSpider(scrapy.Spider):
-    name = 'usd-brl'
+    name = 'usdbrl'
     start_urls = ['https://m.investing.com/currencies/usd-brl']
 
     def parse(self, response):
-        currency = response.xpath('//td[contains(@class, "center")]/text()').getall()
-        value = response.xpath('//td[contains(@class, "last")]/text()').getall()
-        change = response.xpath('//span[contains(@class, "pc")]/text()').getall()
-        perc = response.xpath('//td[contains(@class, "pch")]/text()').getall()
-        timestamp = response.xpath('//td[contains(@class, "tim")]/text()').getall()
-
-        yield {
-            'currency': currency,
-            'value': value,
-            'change': change,
-            'perc': perc,
-            'timestamp': timestamp
-        }
+        item = SemantixItemCotacao()
+        item['currency'] = response.xpath('//h1[contains(@class, "instrumentH1inlineblock")]/text()').getall()
+        item['value'] = response.xpath('//span[contains(@class, "last")]/text()').getall()
+        item['change'] = response.xpath('//i[contains(@class, "pc")]/text()').getall()
+        item['perc'] = response.xpath('//div//i[contains(@class, "pcp")]/text()').getall()
+        item['timestamp'] = response.xpath('//div//i[contains(@class, "time")]/text()').getall()
+        return item

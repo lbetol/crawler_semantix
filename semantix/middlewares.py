@@ -1,9 +1,9 @@
-#Projeto web crawler
-#Processo seletivo para a empresa Semantix
-#------------------------------------------
-#Autor: Alberto Barrios
-#Data: 11/04/2020
-#------------------------------------------
+# Projeto web crawler
+# Processo seletivo para a empresa Semantix
+# ------------------------------------------
+# Autor: Alberto Barrios
+# Data: 11/04/2020
+# ------------------------------------------
 
 # -*- coding: utf-8 -*-
 

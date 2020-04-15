@@ -1,9 +1,9 @@
-#Projeto web crawler
-#Processo seletivo para a empresa Semantix
-#------------------------------------------
-#Autor: Alberto Barrios
-#Data: 11/04/2020
-#------------------------------------------
+# Projeto web crawler
+# Processo seletivo para a empresa Semantix
+# ------------------------------------------
+# Autor: Alberto Barrios
+# Data: 11/04/2020
+# ------------------------------------------
 
 # -*- coding: utf-8 -*-
 
@@ -75,9 +75,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'semantix.pipelines.SemantixPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'semantix.pipelines.SemantixPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
