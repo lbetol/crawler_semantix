@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="faacb2c9-048c-4266-8f00-b1659cf1593f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.directory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/crawler_semantix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crawler_semantix.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/scrapy/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api/scrapy/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semantix/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantix/semantixdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/semantixdb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantix/spiders/semantixdb.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semantix/semantixdb.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/semantix/spiders/ibovespa.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/spiders/ibovespa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semantix/spiders/nasdaq.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/spiders/nasdaq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +41,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
@@ -40,5 +57,26 @@
       <updated>1586976587268</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="30" width="2560" height="1050" key="#Notifications" timestamp="1587061563619">
+      <screen x="0" y="30" width="2560" height="1050" />
+    </state>
+    <state x="0" y="30" width="2560" height="1050" key="#Notifications/0.30.2560.1050@0.30.2560.1050" timestamp="1587061563619" />
+    <state x="1383" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587061678454">
+      <screen x="0" y="30" width="2560" height="1050" />
+    </state>
+    <state x="1383" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.2560.1050@0.30.2560.1050" timestamp="1587061678454" />
   </component>
 </project>
