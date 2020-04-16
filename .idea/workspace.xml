@@ -21,11 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="faacb2c9-048c-4266-8f00-b1659cf1593f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/semantix/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantix/semantixdb.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantix/spiders/ibovespa.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/spiders/ibovespa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantix/spiders/nasdaq.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantix/spiders/nasdaq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

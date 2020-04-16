@@ -39,7 +39,8 @@ class SemantixPipeline(object):
     def __del__(self):
         self.fecha_banco()
 
-    # criar_tabela cria todas as tabelas que serão utilizadas na aplicação
+    # As funções criar_tabela_nasdaq, criar_tabela_ibovespacria e criar_tabela_usdbrl
+    # é a função que irá criar as tabelas que serão utilizadas na aplicação
     def criar_tabela_nasdaq(self):
         self.banco.execute(""" create table if not exists nasdaq(
                             name text,
@@ -91,7 +92,12 @@ class SemantixPipeline(object):
     # Função process_item prepara todos os itens
     # para serem enviados as suas respectivas tabelas
     def process_item(self, item, spider):
-        self.insere_cotacao(item)
+        if spider.name == 'usdbrl':
+            self.insere_cotacao(item)
+        elif spider.name == 'ibovespa':
+            self.insere_ibovespa(item)
+        elif spider.name == 'nasdaq':
+            self.insere_nasdaq(item)
         return item
 
     # insere_cotacao insere os itens na tabela usbrl
