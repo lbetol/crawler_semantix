@@ -26,7 +26,6 @@ class SemantixPipeline(object):
         self.criar_tabela_nasdaq()
         self.criar_tabela_ibovespa()
         self.criar_tabela_usdbrl()
-        self.criar_tabela_brl()
 
     # criar_conexao irá fazer a conexão entre a aplicação ao banco de dados sqlite
     def criar_conexao(self):
@@ -74,28 +73,13 @@ class SemantixPipeline(object):
                             timestamp text
                             )""")
 
-    def criar_tabela_brl(self):
-        self.banco.execute(""" create table if not exists brl(
-                            name text,
-                            last_usd text null,
-                            high_usd text null,
-                            low_usd text null,
-                            last_rs text,
-                            high_rs text,
-                            low_rs text,
-                            chg text,
-                            chg_per text,
-                            vol text,
-                            time varchar(8),
-                            timestamp
-                            )""")
 
     # Função process_item prepara todos os itens
     # para serem enviados as suas respectivas tabelas
     def process_item(self, item, spider):
         if spider.name == 'usdbrl':
             self.insere_cotacao(item)
-            # self.insere_brl(item)
+            self.insereCotacao()
         elif spider.name == 'ibovespa':
             self.insere_ibovespa(item)
         elif spider.name == 'nasdaq':
@@ -112,35 +96,6 @@ class SemantixPipeline(object):
             str(item['timestamp'])
         ))
         self.conecta.commit()
-
-    def insere_brl(self):
-        itens = SemantixItemNasdaq(item)
-        for x in range(0, 103):
-            self.banco.execute("""insert into brl (
-            name,
-            last_usd,
-            high_usd,
-            low_usd,
-            last_rs,
-            high_rs,
-            low_rs,
-            chg,
-            chg_per,
-            vol,
-            time) values (?,?,?,?,?,?,?,?,?,?,?)""", (
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq),
-                str(tbnasdaq)
-            ))
-            self.conecta.commit()
 
     # insere_nasdaq insere os itens na tabela nasdaq
     def insere_nasdaq(self, item):
@@ -171,3 +126,9 @@ class SemantixPipeline(object):
                 str(item['time'][x])
             ))
             self.conecta.commit()
+
+    def insereCotacao(self):
+        self.banco.execute("""CREATE VIEW cotacao  as SELECT nasdaq.name as name, nasdaq.last_usd as last_usd, nasdaq.high_usd as high_usd,
+        nasdaq.low_usd as low_usd, nasdaq.chg as chg, nasdaq.chper as chg_per, nasdaq.vol as vol, nasdaq.timenq as time,
+        nasdaq.last_usd*usdbrl.value as last_rs, nasdaq.high_usd*usdbrl.value as high_rs, nasdaq.low_usd*usdbrl.value as low_rs
+        from nasdaq, usdbrl""")
