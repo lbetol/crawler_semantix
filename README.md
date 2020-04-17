@@ -7,11 +7,11 @@ Projeto realizado para processo seletivo
 2 - Clonar o repositório: git clone https://github.com/lbetol/crawler_semantix.git<br>
 3 - Dentro do repositório clonado digitar o comando:<br>
 ```
-$ docker build -t crawlerSemantix .
+$ docker build -t crawlersemantix .
 ```
 3 - Após a instalação da imagem docker, é só executar a imagem com o comando:
 ```
-$ docker run crawlerSemantix
+$ docker run crawlersemantix
 ```
 
 # Detalhes do projeto
