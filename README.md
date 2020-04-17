@@ -6,7 +6,7 @@ Projeto realizado para processo seletivo
 1 - Docker já instalado no dispositivo<br>
 2 - Clonar o repositório:
 ```
-$ git clone https://github.com/lbetol/crawler_semantix.git<br>
+$ git clone https://github.com/lbetol/crawler_semantix.git
 ```
 3 - Dentro do repositório clonado digitar o comando:<br>
 ```
