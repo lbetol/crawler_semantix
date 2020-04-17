@@ -12,7 +12,7 @@ $ git clone https://github.com/lbetol/crawler_semantix.git
 ```
 $ docker build -t crawlersemantix .
 ```
-3 - Após a instalação da imagem docker, é só executar a imagem com o comando:
+4 - Após a instalação da imagem docker, é só executar a imagem com o comando:
 ```
 $ docker run crawlersemantix
 ```
