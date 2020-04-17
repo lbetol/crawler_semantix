@@ -1,28 +1,31 @@
-# crawler_semantix
-Projeto realizado para processo seletivo
+# Executar projeto sem o docker
 
 <h2>Instalar e iniciar</h2>
 
-1 - Docker já instalado no dispositivo<br>
+1 - Python3 instalado no dispositovo<br>
 2 - Clonar o repositório:
 ```
-$ git clone https://github.com/lbetol/crawler_semantix.git
+$ gi clone https://github.com/lbetol/crawler_semantix.git
+
 ```
-3 - Dentro do repositório clonado digitar o comando:<br>
+3 - Instalar via pip:
 ```
-$ docker build -t crawlersemantix .
+$ pip install Scrapy
+# pip install scrapy-fake-useragent
+$ pip install ipdb
+
 ```
-3 - Após a instalação da imagem docker, é só executar a imagem com o comando:
+4 - Dentro do repositório clonado na pasta db digitar o comando:<br>
 ```
-$ docker run crawlersemantix
+$ scrapy crawl nasdaq
+$ scrapy crawl ibovespa
+$ scrapy crawl usdbrl
 ```
+5 - Estes comandos iram criar um arquivo sqlite com o nome semantixdb.db. <br>
 
 # Detalhes do projeto
 
-Projeto realizado com o fremework Scrapy
-Documentação do framework https://docs.scrapy.org/en/latest <br>
-Banco de dados SQLITE3
-<br>
-Dentro da pasta doc, a um diagrama de funcionamento da projeto.
-Todos os arquivos que foram criados estão com comentários explicando o funcionamento.
+Cada crawler foi feito para ser utilizado de forma independente.
+Ao executar o docker, automaticamente executará o arquivo iniciar.py.
+O arquivo iniciar.py executa os 3 crawler automaticamente.
 
