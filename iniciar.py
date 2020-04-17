@@ -12,7 +12,7 @@ from semantix.spiders.nasdaq import NasdaqSpider
 from semantix.spiders.usdbrl import UsdBrlSpider
 import threading
 
-
+# Executando as spider que realizaram o crawler com um temporizador de 2min
 def temporizador():
     process = CrawlerProcess(get_project_settings())
     process.crawl(NasdaqSpider)
@@ -20,7 +20,7 @@ def temporizador():
     process.crawl(UsdBrlSpider)
     process.start()
 
-    t = threading.Timer(25, temporizador)
+    t = threading.Timer(120, temporizador)
     t.start()
     temporizador()
 
