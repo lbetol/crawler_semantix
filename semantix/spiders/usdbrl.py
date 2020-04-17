@@ -1,14 +1,13 @@
-#Projeto web crawler
-#Processo seletivo para a empresa Semantix
-#------------------------------------------
-#Autor: Alberto Barrios
-#Data: 11/04/2020
-#------------------------------------------
-
+# Projeto web crawler
+# Processo seletivo para a empresa Semantix
+# ------------------------------------------
+# Autor: Alberto Barrios
+# Data: 11/04/2020
+# ------------------------------------------
 # -*- coding: utf-8 -*-
 
 import scrapy
-from semantix.items import SemantixItemCotacao
+from semantix.items import SemantixItemUsdbrl
 
 # classe UsdBrlSpider realiza todos os crawler solicitados
 class UsdBrlSpider(scrapy.Spider):
@@ -21,7 +20,7 @@ class UsdBrlSpider(scrapy.Spider):
     # Função parse realiza o crawler, extraindo o que foi solicitado e o
     # guarda em um objeto que se chama item
     def parse(self, response):
-        item = SemantixItemCotacao()
+        item = SemantixItemUsdbrl()
 
         # Os comando a baixo extrai o conteúdo solicitado da página
         item['currency'] = response.xpath('//h1[contains(@class, "instrumentH1inlineblock")]/text()').getall()

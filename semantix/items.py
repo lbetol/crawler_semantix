@@ -39,7 +39,7 @@ class SemantixItemIbovespa(scrapy.Item):
         vol = scrapy.Field()
         time = scrapy.Field()
 
-class SemantixItemCotacao(scrapy.Item):
+class SemantixItemUsdbrl(scrapy.Item):
         # Extraidos da classe UsdBrlSpider
         # Itens da da cotação
         currency = scrapy.Field()

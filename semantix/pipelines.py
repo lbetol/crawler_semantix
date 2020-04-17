@@ -33,6 +33,7 @@ class SemantixPipeline(object):
         self.conecta = sqlite3.connect("semantixdb.db")
         self.banco = self.conecta.cursor()
 
+
     def fecha_banco(self):
         self.banco.close()
 
@@ -75,7 +76,7 @@ class SemantixPipeline(object):
 
     def criar_tabela_brl(self):
         self.banco.execute(""" create table if not exists brl(
-                            name text primary key,
+                            name text,
                             last_usd text null,
                             high_usd text null,
                             low_usd text null,
@@ -94,6 +95,7 @@ class SemantixPipeline(object):
     def process_item(self, item, spider):
         if spider.name == 'usdbrl':
             self.insere_cotacao(item)
+            # self.insere_brl(item)
         elif spider.name == 'ibovespa':
             self.insere_ibovespa(item)
         elif spider.name == 'nasdaq':
@@ -107,9 +109,38 @@ class SemantixPipeline(object):
             str(item['value'][0]),
             str(item['change'][0]),
             str(item['perc'][0]),
-            str(item['timestamp'][0])
+            str(item['timestamp'])
         ))
         self.conecta.commit()
+
+    def insere_brl(self):
+        itens = SemantixItemNasdaq(item)
+        for x in range(0, 103):
+            self.banco.execute("""insert into brl (
+            name,
+            last_usd,
+            high_usd,
+            low_usd,
+            last_rs,
+            high_rs,
+            low_rs,
+            chg,
+            chg_per,
+            vol,
+            time) values (?,?,?,?,?,?,?,?,?,?,?)""", (
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq),
+                str(tbnasdaq)
+            ))
+            self.conecta.commit()
 
     # insere_nasdaq insere os itens na tabela nasdaq
     def insere_nasdaq(self, item):
